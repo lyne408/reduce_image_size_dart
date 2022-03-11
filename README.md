@@ -2,8 +2,8 @@
 
 ## Purpose
 
-在保持原 quality, lossless/lossy 等等信息的情况下, 通过转换为更高压缩比的格式,
-以降低图片大小.
+原意是想在保持原 quality, lossless/lossy 等等信息的情况下, 
+通过转换为更高压缩比的格式,以降低图片大小.
 
 浏览器支持. 比如放到网盘可以预览.
 
@@ -79,15 +79,15 @@ Pass. MPEG 制定的格式. 浏览器不支持.
   **Command:**
 
   ```bat
-  cwebp.exe -q 100 "C:\Users\lyne\Downloads\Image Picka\[SE] Shibari Rope Art 3BA - 개념글 모음\1.webp"
+  cwebp.exe -q 100 "C:\Users\lyne\Downloads\Image Picka\한글\1.webp"
   ```
 
   **stderr:**
 
   ```text
-  cannot open input file 'C:\Users\lyne\Downloads\Image Picka\[SE] Shibari Rope Art 3BA - ??? ??\1.webp'
-  Error! Could not process file C:\Users\lyne\Downloads\Image Picka\[SE] Shibari Rope Art 3BA - ??? ??\1.webp
-  Error! Cannot read input picture file 'C:\Users\lyne\Downloads\Image Picka\[SE] Shibari Rope Art 3BA - ??? ??\1.webp'
+  cannot open input file 'C:\Users\lyne\Downloads\Image Picka\??\1.webp'
+  Error! Could not process file C:\Users\lyne\Downloads\Image Picka\??\1.webp
+  Error! Cannot read input picture file 'C:\Users\lyne\Downloads\Image Picka\??\1.webp'
   ```
 
 - ### cwebp.exe 不能转换 webp 动图
