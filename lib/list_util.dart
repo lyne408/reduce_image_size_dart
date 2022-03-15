@@ -1,3 +1,5 @@
+/// 除非确实需要分组, 否则不宜分组, 此会降低性能.
+/// 比如把某个组传递给另外的函数使用
 List<List<T>> groupByPartSize<T>(List<T> array, int partSize) {
   final List<List<T>> groups = [];
   for (var eachStart = 0; eachStart < array.length;) {

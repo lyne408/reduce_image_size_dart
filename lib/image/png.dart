@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import '../list_util.dart';
-import './mime_types.dart' as mime_types;
 import 'metadata.dart';
 
 const extensions = ['.png'];
@@ -69,5 +68,5 @@ bool isAnimated(Uint8List buffer) {
 }
 
 Metadata getMetadata(Uint8List buffer) {
-  return Metadata(mime_types.png, isAnimated(buffer), recommendedExtension);
+  return Metadata(mimeType, isAnimated(buffer), recommendedExtension);
 }

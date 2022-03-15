@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-import './mime_types.dart' as mime_types;
 import 'metadata.dart';
 
 const extensions = ['.webp'];
@@ -40,5 +39,5 @@ bool isAnimated(Uint8List buffer) {
 }
 
 Metadata getMetadata(Uint8List buffer) {
-  return Metadata(mime_types.webp, isAnimated(buffer), recommendedExtension);
+  return Metadata(mimeType, isAnimated(buffer), recommendedExtension);
 }

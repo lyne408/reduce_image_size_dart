@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-import './mime_types.dart' as mime_types;
 import '../list_util.dart';
 import 'metadata.dart';
 
@@ -15,7 +14,7 @@ const endCodes = [0xFF, 0xD9];
 /// https://www.file-recovery.com/jpg-signature-format.htm 检查开头三个字节和末尾两个字节
 bool isJpeg(Uint8List buffer) {
   final header = buffer.sublist(0, beginCodes.length);
-  return (bothHave(beginCodes, header));
+  return bothHave(beginCodes, header);
 }
 
 /// 截止 22.02, JPEG 标准没有动图
@@ -25,5 +24,5 @@ bool isAnimated(Uint8List buffer) {
 }
 
 Metadata getMetadata(Uint8List buffer) {
-  return Metadata(mime_types.jpeg, isAnimated(buffer), recommendedExtension);
+  return Metadata(mimeType, isAnimated(buffer), recommendedExtension);
 }

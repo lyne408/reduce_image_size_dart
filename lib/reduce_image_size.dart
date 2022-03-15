@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'dart:isolate';
 import 'package:path/path.dart' as path;
-import 'convert.dart';
+import 'convert.dart' show convert;
+import 'file_util.dart' show moveFile;
 
 class SizeReturns {
   final int inputSize;
@@ -12,31 +13,33 @@ class SizeReturns {
 Future<SizeReturns> smallFile(final String input) async {
   final inputFile = File(input);
   final inputSize = await inputFile.length();
-  print('');
-  print('----------------------------------------------------------');
+
+  print('\n----------------------------------------------------------');
   print('[Info] Input file: ${path.basename(input)}');
+
   final convertReturns = await convert(input, true);
+
   final outputFile = File(convertReturns.output);
   final int outputSize;
+
+  // If output file does not exists, means convert operation failed.
   if (!await outputFile.exists()) {
     print('[Error] Convert to webp failed.');
     print('\texitCode: ${convertReturns.processResult.exitCode}');
     print('\tstdout: ${convertReturns.processResult.stdout}');
     print('\tstderr: ${convertReturns.processResult.stderr}');
     outputSize = inputSize;
-  } else {
+  }
+  // Convert operation success.
+  else {
     outputSize = await outputFile.length();
     print('\tInput file size: $inputSize');
     print('\tOutput file size: $outputSize');
+
     if (outputSize < inputSize) {
-      if (input != convertReturns.actualInput) {
-        await File(convertReturns.actualInput).delete();
-      } else {
-        await inputFile.delete();
-      }
-      outputFile.rename(path.setExtension(input, '.webp'));
+      await File(convertReturns.fixedInput).delete();
+      await moveFile(outputFile, path.setExtension(input, '.webp'));
     } else {
-      // print('\tLarger target: $inputSize < $outputSize');
       await outputFile.delete();
     }
   }

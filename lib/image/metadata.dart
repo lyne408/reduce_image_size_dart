@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-
+import './bmp.dart' as bmp;
 import './gif.dart' as gif;
 import './jpeg.dart' as jpeg;
 import './png.dart' as png;
@@ -31,6 +31,8 @@ Metadata? getMetadata(Uint8List buffer) {
     meta = png.getMetadata(buffer);
   } else if (webp.isWebp(buffer)) {
     meta = webp.getMetadata(buffer);
+  } else if (bmp.isBmp(buffer)) {
+    meta = bmp.getMetadata(buffer);
   } else {
     return null;
   }

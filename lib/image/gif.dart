@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import '../list_util.dart' as list_util;
-import './mime_types.dart' as mime_types;
 import 'metadata.dart';
 
 class ImageHeader {
@@ -116,5 +115,5 @@ bool isAnimated(Uint8List bytes) {
 }
 
 Metadata getMetadata(Uint8List buffer) {
-  return Metadata(mime_types.gif, isAnimated(buffer), recommendedExtension);
+  return Metadata(mimeType, isAnimated(buffer), recommendedExtension);
 }
