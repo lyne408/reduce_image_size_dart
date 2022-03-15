@@ -1,2 +1,2 @@
-dart run build/main.dart
+dart run scripts/build_main.dart
 pause
